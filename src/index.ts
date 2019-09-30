@@ -53,17 +53,19 @@ async function getWeather(cityOrZipcode: string) {
       if (error instanceof got.RequestError) {
         console.error(`RequestError, message="${error.message}"`)
       } else if (error instanceof got.HTTPError) {
+
         const errObj = error.body as OpenWeatherErrorBody
-        if (error.statusCode === 404 && errObj.message.indexOf("city not found") > -1) {
-          console.error(`Can't find city="${query}"`)
+        if (error.statusCode === 404 || error.statusCode === 400) {
+          console.error(`ERROR: ${errObj.message}`)
         } else {
           console.error("HTTPError:")
           console.error(`  message="${error.message}"`)
           console.error(`  code=${error.statusCode}`)
           console.error(`  statusMessage=${error.statusMessage}`)
           console.error(`  url=${error.url}`)
-          console.error(`  body=${errObj}`)
+          console.error(`  body=${JSON.stringify(errObj)}`)
         }
+
       } else if (error instanceof got.TimeoutError) {
         console.error("Request to weather API timed out")
       } else {
