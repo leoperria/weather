@@ -9,7 +9,7 @@
     "test": "jest --forceExit --coverage --verbose --detectOpenHandles",
     "watch-ts": "tsc -w",
     "build-ts": "tsc",
-    "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
+    "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --fix",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@types/dotenv": "6.1.1",
-    "@types/got": ^9.6.7",
+    "@types/got": "9.6.7",
     "@types/jest": "24.0.18",
     "@types/lodash": "4.14.141",
     "@types/nock": "11.1.0",
